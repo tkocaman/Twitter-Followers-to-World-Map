@@ -4,7 +4,7 @@
 
 ## Installation and preparation
 
-This project runs on Python 3.8+ 
+This project runs on Python 3.6+ 
 There are some general library requirements for the project
 - pandas==1.2.4
 - Flask==2.0.0
