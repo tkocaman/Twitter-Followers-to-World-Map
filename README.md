@@ -1,5 +1,7 @@
 # Get Twitter followers and show their locations on the map.
 
+![Map](https://repository-images.githubusercontent.com/368354512/d7c6c600-b75a-11eb-9dbf-d8f963245419)
+
 ## Installation and preparation
 
 This project runs on Python 3.8+ 
