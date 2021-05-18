@@ -1,1 +1,145 @@
+<!DOCTYPE HTML>
+
+<html>
+	<head>
+		<title>CHECKMYTWEET.COM</title>
+		<meta charset="utf-8" />
+        <link rel=stylesheet type=text/css href="{{ url_for('static', filename='main.css') }}">
+        <script src="https://code.highcharts.com/highcharts.js"></script>
+        <script src="https://code.highcharts.com/maps/modules/map.js"></script>
+        <script src="https://code.highcharts.com/mapdata/countries/us/us-all.js"></script>
+        <script src="https://code.highcharts.com/mapdata/custom/world-palestine-highres.js"></script>     
+
+	</head>
+
+	<body>
+        <div id="wrapper">   
+            <br>
+            <p style="text-align:center; font-size: 20px;">Get twitter followers and show them on a nice map.</p>
+            <p style="text-align:center"><a href="https://github.com/tkocaman/Twitter-Followers-to-world-Map" target="_blank">Source Code</a></p>
+            <p style="text-align:center">Full website <a href="https://www.checkmytweet.com" target="_blank">www.checkmytweet.com</a></p>
+            <div id="chart-box">
+            <div id="container-us-map"></div>
+            <div id="container-world-map"></div>
+            </div>
+        </div>
+	</body>
+</html>
+        
+<!-- US MAP STARTS-->   
+<script>
+
+        var dataUsMap = {{dataUs|safe}};
+
+    // Create the chart
+    Highcharts.mapChart('container-us-map', {
+        credits: {
+            enabled: false
+        },
+        chart: {
+            map: 'countries/us/us-all'
+        },
+
+        title: {
+            text: ''
+        },
+
+        subtitle: {
+            text: ''
+        },
+
+        mapNavigation: {
+            enabled: true,
+            buttonOptions: {
+                verticalAlign: 'bottom'
+            }
+        },
+
+        colorAxis: {
+            min: 0
+        },
+
+        series: [{
+            data: dataUsMap,
+            name: 'Random data',
+            states: {
+                hover: {
+                    color: '#BADA55'
+                }
+            },
+            dataLabels: {
+                enabled: true,
+                format: '{point.name}'
+            }
+        }, {
+            name: 'Separators',
+            type: 'mapline',
+            data: Highcharts.geojson(Highcharts.maps['countries/us/us-all'], 'mapline'),
+            color: 'silver',
+            nullColor: 'silver',
+            showInLegend: false,
+            enableMouseTracking: false
+        }]
+    });
+</script>
+<!-- US MAP ENDS-->
+
+<!-- WORLD MAP STARTS -->
+<script>
+
+    var dataWorldMap = {{dataWorld|safe}};
+
+    // Create the chart
+    Highcharts.mapChart('container-world-map', {
+    credits: {
+                    enabled: false
+                },
+        chart: {
+            map: 'custom/world-palestine-highres'
+        },
+
+        title: {
+            text: ''
+        },
+
+        subtitle: {
+            text: ''
+        },
+
+        mapNavigation: {
+            enabled: true,
+            buttonOptions: {
+                verticalAlign: 'bottom'
+            }
+        },
+
+        colorAxis: {
+        min: 1,
+                type: 'logarithmic',
+                minColor: '#e5eaf4',
+                maxColor: '#063797',
+                stops: [
+                    [0, '#e5eaf4'],
+                    [0.30, '#e5eaf4'],
+                    [1, '#063797']
+                ]
+        },
+
+        series: [{
+            data: dataWorldMap,
+            name: 'Random data',
+            states: {
+                hover: {
+                    color: '#BADA55'
+                }
+            },
+            dataLabels: {
+                enabled: false,
+                format: '{point.name}'
+            }
+        }]
+    });
+
+</script>
+<!-- WORLD MAP ENDS -->
 
