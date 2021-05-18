@@ -26,7 +26,7 @@ To start you need to create a consumer key and secret, and an access key and sec
 |requirements.txt | file for installing dependencies via pip|
 |main.py | file for getting followers via Tweepy and getting user locations via geopy saving them into two seperate files inside data folder.|
 |app.py | runs flask app.|
-|dictionaries.py | Includes dictionary for mapping geo-locations.|
+|dictionaries.py | Includes dictionaries for mapping geo-locations.|
 |index.html | flask template for rendering.|
 |twitter_auth_data.json | keeps your twitter API credentals.|
 |follower_list.csv | Twitter folllowers stores in.|
